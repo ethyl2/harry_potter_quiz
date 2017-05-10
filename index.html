@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css?family=Merienda+One|Rokkitt" rel="stylesheet">
+  <link href="css/styles.css" type="text/css" rel="stylesheet">
+  <script src="js/jquery-3.1.1.slim.min.js"></script>
+  <link rel="shortcut icon" type="image/png" href="img/favicon.ico">
+  <title>Unofficial Sorting Hat Quiz</title>
+</head>
+<body>
+  <header>
+    <h1>Unofficial Hogwarts Sorting Hat Quiz</h1>
+    <h3>I was on an Internet search for a printable quiz and came across a few, but I was
+      a little unsatisfied with them. Here is my modified quiz, which you can
+      print <a href="docs/SortingHatQuiz.pdf" target="_new">here</a>
+      or do this quiz right on this page.
+    </h3>
+    <hr>
+  </header>
+
+  <div class="main" id="main">
+    <section id="quiz">
+      <h2 id="question"></h2>
+      <h3 id="options"></h3>
+      <div id="optionButtons">
+        <button class="choice" id="optionA">A</button>
+        <button class="choice" id="optionB">B</button>
+        <button class="choice" id="optionC">C</button>
+        <button class="choice" id="optionD">D</button>
+      </div>
+      <button class="next" id="next">Next Question</button>
+    </section>
+
+    <section id="results">
+      <h1>Here are the tallies.</h1>
+      <p>The one with the greatest number will be your Hogwarts House!</p>
+      <h3 id="gResults">Gryffindor:</h3>
+      <h3 id="hResults">Hufflepuff:</h3>
+      <h3 id="sResults">Slytherin:</h3>
+      <h3 id="rResults">Ravenclaw:</h3>
+      <h1 id="houseResult">The Sorting Hat declares:</h1>
+      <button id="reset">Start Over</button>
+    </section>
+
+  </div>
+
+  <footer>
+    <hr>
+    <div id="sources">
+      <p>Sources:
+      <a href="https://sites.google.com/site/harrypotterhousequiz/" target="_blank">
+        https://sites.google.com/site/harrypotterhousequiz/</a>
+      <a href="http://sorting-hat.com/sorthat.htm" target="_blank">
+        http://sorting-hat.com/sorthat.htm</a>
+      <a href="https://puddlewonderfullearning.blogspot.com/2013/08/harry-potter-party-great-hall-and.html"
+        target="_blank">
+        https://puddlewonderfullearning.blogspot.com/2013/08/harry-potter-party-great-hall-and.html</a>
+      </p>
+    </div>
+  </footer>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

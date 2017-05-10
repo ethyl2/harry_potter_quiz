@@ -1,0 +1,22 @@
+body {
+  background-image: url("../img/parchmentBackground.jpg");
+  background-size: cover;
+  font-family: 'Rokkitt', serif;
+  margin: 1.5em;
+  padding: 1.25em;
+
+  }
+
+header {
+  font-family: 'Merienda One', cursive;
+}
+
+h1 {
+  margin: auto;
+  text-align: center;
+}
+
+button {
+  padding: 1.5em;
+  font-size: 1.5em;
+}
