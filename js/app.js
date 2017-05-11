@@ -42,6 +42,35 @@ $(document).ready(function() {
   $("#results").hide();
 });
 
+function calculateHouse() {
+  var houseTally = {
+    "G": 0,
+    "R": 0,
+    "S": 0,
+    "H": 0
+  };
+  for (var i=0; i < answerArray.length; i++) {
+    var userResponse = answerArray[i];
+    var house = questions[i]["options"][userResponse]["house"];
+    houseTally[house]++;
+    }
+  return houseTally;
+};
+
+function calculateWinner(houseTally) {
+  //TODO: find the house with the largest number
+  var max = 0;
+  var maxHouse;
+  for (var house in Object.keys(houseTally).length) {
+    if (houseTally[house] > max) {
+      maxHouse = house;
+      max = houseTally[house];
+    }
+  }
+  return maxHouse;
+}
+
+
 function showQuestion() {
   var selection = questions[questionIndex];
   $("#next").hide();
@@ -67,6 +96,14 @@ $("#optionButtons").click(function(e) {
       console.log("Time to tally");
       $("#quiz").hide();
       $("#results").show();
+      var output = calculateHouse();
+      var winner = calculateWinner(output);
+      console.log(output);
+      $("#gResults").append(" " + output["G"]);
+      $("#hResults").append(" " + output["H"]);
+      $("#sResults").append(" " + output["S"]);
+      $("#rResults").append(" " + output["R"]);
+      $("#houseResult").append(winner);
 
     } else {
     $("#optionButtons").hide();
