@@ -30,6 +30,38 @@ var questions = [
         {"text": "Merlin",
         "house": "S"}
       }
+    },
+    {"question": "What means would you prefer to use to stop an attacker?",
+    "options":
+      {"optionA":
+        {"text": "Turn them into a toad.",
+          "house": "G"},
+      "optionB":
+        {"text": "Cast a Full-Body Bind Charm.",
+          "house": "R"},
+      "optionC":
+        {"text": "Use Devil's Snare weed to entangle them.",
+          "house": "H"},
+      "optionD":
+        {"text": "Throw a vial of Shrinking Potion onto them.",
+          "house": "S"}
+      }
+    },
+    {"question": "Which of these traits is most important to you?",
+    "options":
+      {"optionA":
+        {"text": "Intellect",
+        "house": "R"},
+      "optionB":
+        {"text": "Bravery",
+        "house": "G"},
+      "optionC":
+        {"text": "Winning",
+        "house": "S"},
+      "optionD":
+        {"text": "Hard Work",
+        "house": "H"}
+      }
     }
 ]
 
