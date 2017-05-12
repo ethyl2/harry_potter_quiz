@@ -142,7 +142,7 @@ $("#optionButtons").click(function(e) {
       $("#hResults").append(" " + output["H"]);
       $("#sResults").append(" " + output["S"]);
       $("#rResults").append(" " + output["R"]);
-      $("#houseResult").append(winner);
+      $("#houseResult").append(winner).hide().fadeIn("slow");
 
     } else {
     $("#optionButtons").hide();
