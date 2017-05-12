@@ -58,21 +58,29 @@ function calculateHouse() {
 };
 
 function calculateWinner(houseTally) {
-  //TODO: find the house with the largest number
+  var wholeNames = {"H": "Hufflepuff", "G": "Gryffindor", "S": "Slytherin",
+    "R": "Ravenclaw"};
   var max = 0;
   var maxHouse;
-  for (var house in Object.keys(houseTally).length) {
-    if (houseTally[house] > max) {
-      maxHouse = house;
-      max = houseTally[house];
+  var keys = Object.keys(houseTally);
+
+  for (var house in keys) {
+    var key = keys[house];
+    var tally = houseTally[key];
+
+    if (tally > max) {
+      maxHouse = key;
+      max = tally;
     }
   }
-  return maxHouse;
+  return wholeNames[maxHouse];
 }
 
 
 function showQuestion() {
   var selection = questions[questionIndex];
+
+  $("#quiz").show();
   $("#next").hide();
   $("#optionButtons").show();
   $("#options").empty();
@@ -91,14 +99,13 @@ $("#optionButtons").click(function(e) {
     questionIndex++;
     var chosenAnswer = e.target.id;
     answerArray.push(chosenAnswer);
-    console.log(answerArray);
+
     if (questionIndex == questions.length) {
-      console.log("Time to tally");
       $("#quiz").hide();
       $("#results").show();
       var output = calculateHouse();
       var winner = calculateWinner(output);
-      console.log(output);
+
       $("#gResults").append(" " + output["G"]);
       $("#hResults").append(" " + output["H"]);
       $("#sResults").append(" " + output["S"]);
@@ -115,4 +122,17 @@ $("#next").click(function() {
   if (questionIndex <= questions.length) {
     showQuestion();
   }
+});
+
+$("#reset").click(function() {
+  $("#results").hide();
+  answerArray = [];
+  questionIndex = 0;
+  $("#gResults").html("Gryffindor: ");
+  $("#rResults").html("Ravenclaw: ");
+  $("#sResults").html("Slytherin: ");
+  $("#hResults").html("Hufflepuff: ");
+  $("#houseResult").empty();
+  showQuestion();
+
 });
