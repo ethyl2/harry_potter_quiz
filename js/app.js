@@ -69,11 +69,11 @@ var answerArray = [];
 var questionIndex = 0;
 
 $(document).ready(function() {
+  clearDisplay();
   showQuestion();
-  $("#next").hide();
-  $("#results").hide();
 });
 
+// Calculate functions
 function calculateHouse() {
   var houseTally = {
     "G": 0,
@@ -108,7 +108,7 @@ function calculateWinner(houseTally) {
   return wholeNames[maxHouse];
 }
 
-
+// Display functions
 function showQuestion() {
   var selection = questions[questionIndex];
 
@@ -121,32 +121,45 @@ function showQuestion() {
   var letterIndex = 0;
   for (var option in selection["options"]) {
     if (selection["options"].hasOwnProperty(option)) {
-      $("#options").append(letterArray[letterIndex]+ ": " + selection["options"][option]["text"] + "<br>");
+      $("#options").append(letterArray[letterIndex]+ ": "
+        + selection["options"][option]["text"] + "<br>");
     }
     letterIndex++;
   }
 }
 
+function showResults() {
+  $("#quiz").hide();
+  $("#results").show();
+  var output = calculateHouse();
+  var winner = calculateWinner(output);
+
+  $("#gResults").append(" " + output["G"]);
+  $("#hResults").append(" " + output["H"]);
+  $("#sResults").append(" " + output["S"]);
+  $("#rResults").append(" " + output["R"]);
+  $("#houseResult").append(winner).hide().fadeIn("slow");
+}
+
+function clearDisplay() {
+  $("#results").hide();
+  $("#gResults").html("Gryffindor: ");
+  $("#rResults").html("Ravenclaw: ");
+  $("#sResults").html("Slytherin: ");
+  $("#hResults").html("Hufflepuff: ");
+  $("#houseResult").empty();
+}
+
+// Click Handlers
 $("#optionButtons").click(function(e) {
-    questionIndex++;
-    var chosenAnswer = e.target.id;
-    answerArray.push(chosenAnswer);
-
-    if (questionIndex == questions.length) {
-      $("#quiz").hide();
-      $("#results").show();
-      var output = calculateHouse();
-      var winner = calculateWinner(output);
-
-      $("#gResults").append(" " + output["G"]);
-      $("#hResults").append(" " + output["H"]);
-      $("#sResults").append(" " + output["S"]);
-      $("#rResults").append(" " + output["R"]);
-      $("#houseResult").append(winner).hide().fadeIn("slow");
-
-    } else {
-    $("#optionButtons").hide();
-    $("#next").show();
+  questionIndex++;
+  var chosenAnswer = e.target.id;
+  answerArray.push(chosenAnswer);
+  if (questionIndex == questions.length) {
+    showResults();
+  } else {
+  $("#optionButtons").hide();
+  $("#next").show();
   }
 });
 
@@ -157,14 +170,9 @@ $("#next").click(function() {
 });
 
 $("#reset").click(function() {
-  $("#results").hide();
   answerArray = [];
   questionIndex = 0;
-  $("#gResults").html("Gryffindor: ");
-  $("#rResults").html("Ravenclaw: ");
-  $("#sResults").html("Slytherin: ");
-  $("#hResults").html("Hufflepuff: ");
-  $("#houseResult").empty();
+  clearDisplay();
   showQuestion();
 
 });
