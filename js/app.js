@@ -65,6 +65,13 @@ var questions = [
     }
 ]
 
+var houseColorImages = {
+  "H": "img/Hufflepuff_colours.svg",
+  "G": "img/Gryffindorcolours.svg",
+  "S": "img/Slytherin_colours.svg",
+  "R": "img/Ravenclawcolours.svg"
+}
+
 var answerArray = [];
 var questionIndex = 0;
 
@@ -133,12 +140,15 @@ function showResults() {
   $("#results").show();
   var output = calculateHouse();
   var winner = calculateWinner(output);
+  var letter = winner.charAt(0);
 
   $("#gResults").append(" " + output["G"]);
   $("#hResults").append(" " + output["H"]);
   $("#sResults").append(" " + output["S"]);
   $("#rResults").append(" " + output["R"]);
   $("#houseResult").append(winner).hide().fadeIn("slow");
+
+  $("#houseColors").attr("src", houseColorImages[letter]);
 }
 
 function clearDisplay() {

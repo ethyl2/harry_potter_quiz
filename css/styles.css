@@ -11,6 +11,11 @@ header {
   font-family: 'Merienda One', cursive;
 }
 
+header img {
+  float: right;
+  margin-left: 0.5em;
+}
+
 h1 {
   margin: auto;
   text-align: center;
@@ -23,4 +28,16 @@ button {
 
 #houseResult {
   font-family: 'Merienda One', cursive;
+  margin-top: 1em;
+}
+
+#sortingHat img {
+  margin: auto;
+  display: block;
+  clear: both;
+  width: 10%;
+  border: 0.1em solid black;
+  -ms-transform: rotate(90deg); /* IE 9 */
+  -webkit-transform: rotate(90deg); /* Chrome, Safari, Opera */
+  transform: rotate(90deg);
 }
